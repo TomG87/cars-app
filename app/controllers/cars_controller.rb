@@ -20,4 +20,14 @@ class CarsController < ApplicationController
   @car.save
   render :show
   end
+
+  def update
+    @car = Car.find_by(id: params[:id])
+    @car.brand = params[:brand] || @car.brand
+    @car.model = params[:model] || @car.model
+    @car.color = params[:color] || @car.color
+    @car.year = params[:year] || @car.year
+    @car.save
+    render :show
+  end
 end

@@ -9,4 +9,15 @@ class CarsController < ApplicationController
   @cars = Car.all
   render :index
   end
+
+  def create
+  @car = Car.new(
+    brand: params[:title], 
+    model: params[:model], 
+    color: params[:color], 
+    year: params[:year] 
+  )
+  @car.save
+  render :show
+  end
 end

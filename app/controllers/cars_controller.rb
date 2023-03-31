@@ -12,7 +12,7 @@ class CarsController < ApplicationController
 
   def create
   @car = Car.new(
-    brand: params[:title], 
+    brand: params[:brand], 
     model: params[:model], 
     color: params[:color], 
     year: params[:year] 
@@ -29,5 +29,11 @@ class CarsController < ApplicationController
     @car.year = params[:year] || @car.year
     @car.save
     render :show
+  end
+
+  def destroy
+    @car = Car.find_by(id: params[:id])
+    @car.destroy
+    render json: {message: "Car has been successfully removed"}
   end
 end
